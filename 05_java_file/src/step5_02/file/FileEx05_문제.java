@@ -32,18 +32,18 @@ public class FileEx05_문제 {
 				fr = new FileReader(file);
 				br = new BufferedReader(fr);
 				
-				String data = br.readLine();
-				System.out.println(data);
-				for(int i=0; i<3; i++) {
-					names[i] = data.substring(3);
+				for (int i=0; i<3; i++) {
+					String data = br.readLine();
+					System.out.println(data);
+					String temp = data.substring(3);
+					
+					String data2 = br.readLine();
+					System.out.println(data2);
+					
+					String data3 = br.readLine();
+					System.out.println(data3);
 					
 				}
-				
-				String data2 = br.readLine();
-				System.out.println(data2);
-				
-				String data3 = br.readLine();
-				System.out.println(data3);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
