@@ -1,9 +1,10 @@
 package step5_02.file;
-
+//2021/04/09 14:30 ~ 14:49
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 //# 파일 로드하기 : 연습문제
 
@@ -31,18 +32,21 @@ public class FileEx05_문제 {
 				
 				fr = new FileReader(file);
 				br = new BufferedReader(fr);
+				int i = 0;
 				
-				for (int i=0; i<3; i++) {
+				while(true) {
 					String data = br.readLine();
-					System.out.println(data);
-					String temp = data.substring(3);
+					if(data == null) { 
+						break;
+					}
+					String[] temp = data.split("/");
 					
-					String data2 = br.readLine();
-					System.out.println(data2);
 					
-					String data3 = br.readLine();
-					System.out.println(data3);
+					names[i] = temp[0];	
+					pws[i] = temp[1];
+					moneys[i] = Integer.parseInt(temp[2]);
 					
+					i++;
 				}
 				
 			} catch (Exception e) {
@@ -53,6 +57,9 @@ public class FileEx05_문제 {
 			}
 			
 		}
+		System.out.println(Arrays.toString(names));
+		System.out.println(Arrays.toString(pws));
+		System.out.println(Arrays.toString(moneys));
 
 	}
 

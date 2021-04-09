@@ -23,7 +23,6 @@ public class FileEx04_내정답 {
 		String data = "";
 		
 		for(int i=0; i<3; i++) {
-			data += "// ";
 			data += names[i];
 			data += "/";
 			data += pws [i];
