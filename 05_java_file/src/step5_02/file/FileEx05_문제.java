@@ -1,10 +1,4 @@
 package step5_02.file;
-//2021/04/09 14:30 ~ 14:49
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
 
 //# 파일 로드하기 : 연습문제
 
@@ -21,45 +15,6 @@ public class FileEx05_문제 {
 		int[] moneys   = new int[3];			// 20000, 30000 , 40000
 		
 		String fileName = "fileTest02.txt";
-		
-		File file = new File(fileName);
-		FileReader fr = null;
-		BufferedReader br = null;
-		
-		if(file.exists()) {
-			
-			try {
-				
-				fr = new FileReader(file);
-				br = new BufferedReader(fr);
-				int i = 0;
-				
-				while(true) {
-					String data = br.readLine();
-					if(data == null) { 
-						break;
-					}
-					String[] temp = data.split("/");
-					
-					
-					names[i] = temp[0];	
-					pws[i] = temp[1];
-					moneys[i] = Integer.parseInt(temp[2]);
-					
-					i++;
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {br.close();} catch (IOException e) {e.printStackTrace();}
-				try {fr.close();} catch (IOException e) {e.printStackTrace();}
-			}
-			
-		}
-		System.out.println(Arrays.toString(names));
-		System.out.println(Arrays.toString(pws));
-		System.out.println(Arrays.toString(moneys));
 
 	}
 
