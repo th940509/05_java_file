@@ -62,7 +62,7 @@ public class FileEx07_정답예시 {
 
                 int check = 1;
 
-                for (int i=0; i<accsCnt; i++) {
+                for (int i=0; i<accsCnt; i++) { // 처음 가입할때는 accsCnt가 0이기 때문에 이 식은 성립되지 않음.
                     if (accs[i].equals(acc)) {
                         check = -1;
                     }
@@ -71,13 +71,13 @@ public class FileEx07_정답예시 {
                 if (check == 1) {
                     if (accsCnt == 5) {
                         System.out.println("[메세지]더이상 가입할 수 없습니다.");
-                        continue;
+                        continue;  // 5번 이상 가입 할 수 없음. accs의 크기가 0,1,2,3,4
                     }
 
                     System.out.print("[가입]비밀번호 입력 : ");
                     String pw = scan.next();
                     
-                    accs[accsCnt] = acc;
+                    accs[accsCnt] = acc; // accs 배열에 계좌번호 저장
                     pws[accsCnt] = pw;
                     moneys[accsCnt] = 1000;
 
@@ -85,7 +85,7 @@ public class FileEx07_정답예시 {
                     System.out.println("[메세지]회원가입을 축하합니다.");
 
                 }
-                else {
+                else { // check가 -1일 경우 계좌번호가 중복됨.
                     System.out.println("[메세지]계좌번호가 중복됩니다.");
                 }
 
@@ -96,7 +96,7 @@ public class FileEx07_정답예시 {
                     for (int i=identifier; i<accsCnt-1; i++) {
                         accs[i] = accs[i + 1];
                         pws[i] = pws[i + 1];
-                        moneys[i] = moneys[i + 1];
+                        moneys[i] = moneys[i + 1]; // 삭제하고 싶은 accs, pws에 뒤에 것을 당겨서 덮어 씌움.
                     }
                     accsCnt--;
                     identifier = -1;
@@ -117,7 +117,7 @@ public class FileEx07_정답예시 {
 
                     for (int i=0; i<accsCnt; i++) {
                         if (accs[i].equals(acc) && pws[i].equals(pw)) {
-                            identifier = i;
+                            identifier = i; // 계좌, 패스워드 확인 후 일치할시 identifier에 index를 저장.
                         }
                     }
 
@@ -178,7 +178,7 @@ public class FileEx07_정답예시 {
                     int check = -1;
                     for (int i=0; i<accsCnt; i++) {
                         if (accs[i].equals(acc)) {
-                            check = i;
+                            check = i; // 계좌 번호 확인 후 check를 인덱스로 변경.
                         }
                     }
 
