@@ -229,26 +229,26 @@ public class FileEx07_정답예시 {
                 }
                 data = data.substring(0, data.length()-1);
                 
-                FileWriter fw = null;
+                FileWriter fw = null; // 위쪽에 파일 이름 생성 이루어짐.
                 
                 try {
-                    fw = new FileWriter(fileName);
-                    fw.write(data);
+                    fw = new FileWriter(fileName); // 파일을 생성하는 객체
+                    fw.write(data); // data 문자열 불러오기
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    if (fw != null) {try {fw.close();} catch (IOException e) {}}
+                    if (fw != null) {try {fw.close();} catch (IOException e) {e.printStackTrace();}}
                 }
             }
 
             else if(sel == 10) {
                 
-            	File file = new File(fileName);
+            	File file = new File(fileName); // 파일객체 생성
 
                 if(file.exists()) {
                     
-                	FileReader fr = null;
-                    BufferedReader br = null;
+                	FileReader fr = null; // 파일 읽어오기
+                    BufferedReader br = null; //텍스트 읽어오기
                     
                     try {
                     	
@@ -257,9 +257,9 @@ public class FileEx07_정답예시 {
                         
                         String data = "";
                         
-                        while (true) {
+                        while (true) { // 전체 텍스트 읽어오기
                             String line = br.readLine();
-                            if (line == null) {
+                            if (line == null) { // 읽어올 라인이 없으면 null을 반환한다.
                                 break;
                             }
                             data += line;

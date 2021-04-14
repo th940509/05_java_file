@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 //# 파일 컨트롤러[2단계] : ATM
 
-public class FileEx07_내저답 {
+public class FileEx07_내정답 {
 	
 	public static void main(String[] args) {
 
