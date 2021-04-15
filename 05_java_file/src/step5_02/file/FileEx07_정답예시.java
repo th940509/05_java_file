@@ -55,7 +55,7 @@ public class FileEx07_정답예시 {
 
             int sel = scan.nextInt();
 
-            if (sel == 1) {
+            if (sel == 1) { // 회원가입
 
                 System.out.print("[가입]계좌번호 입력 : ");
                 String acc = scan.next();
@@ -91,14 +91,15 @@ public class FileEx07_정답예시 {
 
             }
 
-            else if (sel == 2) {
+            else if (sel == 2) { //회원탈퇴
                 if (identifier != -1) {
                     for (int i=identifier; i<accsCnt-1; i++) {
                         accs[i] = accs[i + 1];
                         pws[i] = pws[i + 1];
                         moneys[i] = moneys[i + 1]; // 삭제하고 싶은 accs, pws에 뒤에 것을 당겨서 덮어 씌움.
+                                                   // 저장된 아이디, 패스워드가 하나일 경우에는 성립되지 않음.
                     }
-                    accsCnt--;
+                    accsCnt--; // 저장된 아이디, 패스워드가 하나일 경우.
                     identifier = -1;
                     System.out.println("[메세지]탈퇴되었습니다.");
                 }
@@ -107,7 +108,7 @@ public class FileEx07_정답예시 {
                 }
             }
 
-            else if (sel == 3) {
+            else if (sel == 3) { //로그인
                 if (identifier == -1) {
                     System.out.print("[로그인]계좌번호를 입력 : ");
                     String acc = scan.next();
@@ -122,15 +123,15 @@ public class FileEx07_정답예시 {
                     }
 
                     if (identifier == -1) {
-                        System.out.println("[메세지]계좌번호와 비밀번호를 확인해주세요.");
+                        System.out.println("[메세지]계좌번호와 비밀번호를 확인해주세요."); // 위의 식이 성립하지 않을 경우.
                     }
                 }
                 else{
-                    System.out.println("[메세지]" + accs[identifier] + "님, 로그인 중...");
+                    System.out.println("[메세지]" + accs[identifier] + "님, 로그인 중..."); // identifier이 -1이 아닐경우 이미 로그인.
                 }
             }
 
-            else if (sel == 4) {
+            else if (sel == 4) { //로그아웃
                 if( identifier == -1) {
                     System.out.println("[메세지]로그인 후 이용가능합니다.");
                 }
@@ -140,19 +141,19 @@ public class FileEx07_정답예시 {
                 }
             }
 
-            else if (sel == 5) {
+            else if (sel == 5) { //입금
                 if (identifier != -1) {
                     System.out.print("[입금]금액 입력 : ");
                     int money = scan.nextInt();
                     moneys[identifier] += money;
                     System.out.println("[메세지]입금을 완료하였습니다.");
                 }
-                else {
+                else { // identifier가 -1일 경우.
                     System.out.println("[메세지]로그인 후 이용가능합니다.");
                 }
             }
 
-            else if (sel == 6) {
+            else if (sel == 6) { //출금
                 if (identifier != -1) {
                     System.out.print("[출금]금액 입력 : ");
                     int money = scan.nextInt();
@@ -170,7 +171,7 @@ public class FileEx07_정답예시 {
                 }                
             }
 
-            else if (sel == 7) {
+            else if (sel == 7) { // 이체
                 if (identifier != -1) {
                     System.out.print("[이체]계좌번호 입력 : ");
                     String acc = scan.next();
@@ -194,7 +195,7 @@ public class FileEx07_정답예시 {
                             System.out.println("[메세지]잔액이 부족합니다.");
                         }
                     }
-                    else {
+                    else { // 위의 if (accs[i].equals(acc)) 식이 성립하지 않을때.
                         System.out.println("[메세지]계좌번호를 확인해주세요.");
                     }
                 }
@@ -203,7 +204,7 @@ public class FileEx07_정답예시 {
                 }                
             }
 
-            else if (sel == 8) {
+            else if (sel == 8) { // 잔액조회
                 if (identifier != -1) {
                     System.out.println(accs[identifier] + "님의 계좌잔액은 " + moneys[identifier] + "원 입니다.");
                 }
@@ -212,13 +213,13 @@ public class FileEx07_정답예시 {
                 }                
             }
 
-            else if (sel == 9) {
+            else if (sel == 9) { // 저장 (파일 입력)
                 if (accsCnt == 0) {
                     System.out.println("[메세지]저장할 데이터가 없습니다.");
                     continue;
                 }
 
-                String data = "";
+                String data = "";  // 문자열 데이터 미리 생성.
                 for (int i=0; i<accsCnt; i++) {
                     data += accs[i];
                     data += "/";
@@ -233,7 +234,7 @@ public class FileEx07_정답예시 {
                 
                 try {
                     fw = new FileWriter(fileName); // 파일을 생성하는 객체
-                    fw.write(data); // data 문자열 불러오기
+                    fw.write(data); // 위의 data 문자열 불러오기
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -241,11 +242,11 @@ public class FileEx07_정답예시 {
                 }
             }
 
-            else if(sel == 10) {
+            else if(sel == 10) { // 로드 (파일 불러오기)
                 
             	File file = new File(fileName); // 파일객체 생성
 
-                if(file.exists()) {
+                if(file.exists()) { // 파일이 존재하면..
                     
                 	FileReader fr = null; // 파일 읽어오기
                     BufferedReader br = null; //텍스트 읽어오기

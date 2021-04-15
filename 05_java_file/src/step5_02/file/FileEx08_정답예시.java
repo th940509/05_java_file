@@ -60,7 +60,7 @@ public class FileEx08_정답예시 {
 			System.out.print("메뉴 선택 : ");
 			int sel = scan.nextInt();
 			
-			if (sel == 1) {
+			if (sel == 1) { // 로그인
 				if (log == -1) {
 					System.out.print("[로그인]ID 입력 : ");
 					String id = scan.next();
@@ -69,11 +69,11 @@ public class FileEx08_정답예시 {
 					
 					for (int i=0; i<3; i++) {
 						if (ids[i].equals(id) && pws[i].equals(pw)) {
-							log= i;
+							log= i; // 일치할 경우 log에 idx의 값을 넣음.
 						}
 					}
 					
-					if (log == -1) {
+					if (log == -1) { // 아닐경우.
 						System.out.println("[메세지]ID와 Pw를 확인해주세요.");
 					}
 					else {
@@ -84,7 +84,7 @@ public class FileEx08_정답예시 {
 					System.out.println("[메세지]현재" + ids[log] + "님, 로그인 중...");
 				}
 			}
-			else if (sel == 2) {
+			else if (sel == 2) { // 로그아웃
 				if (log != -1) {
 					log = -1;
 					System.out.println("[메세지]로그아웃 되었습니다.");
@@ -93,9 +93,9 @@ public class FileEx08_정답예시 {
 					System.out.println("[메세지]로그인 후 이용가능합니다.");
 				}
 			}
-			else if (sel == 3) {
+			else if (sel == 3) { // 쇼핑
 				if (log != -1) {
-					for (int i=0; i<items.length; i++) {
+					for (int i=0; i<items.length; i++) { // 상품 목록 출력
 						System.out.println((i+1) + "." + items[i]);
 					}
 					System.out.print("[쇼핑]상품번호를 선택하세요 : ");
@@ -110,7 +110,7 @@ public class FileEx08_정답예시 {
 					System.out.println("[메세지]로그인 후 이용가능합니다.");
 				}
 			}
-			else if (sel == 4) {
+			else if (sel == 4) { // 장바구니
 				if (log != -1) {
 					System.out.println("[" + ids[log] + "님의 장바구니]");
 					int j = 0;
@@ -128,7 +128,7 @@ public class FileEx08_정답예시 {
 					System.out.println("[메세지]로그인 후 이용가능합니다.");
 				}
 			}
-			else if (sel == 5) {
+			else if (sel == 5) { // 저장
 				String data = "";
 				
 				// # 장바구니 정보 저장하기
