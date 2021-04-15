@@ -102,14 +102,88 @@ public class FileEx07_내정답 {
 							identifier = i;
 						}
 					}
+					if(identifier == -1) {
+						System.out.println("[메세지] 계좌번호와 비밀번호를 확인해주세요.");
+					}
 				}
+				else {
+					System.out.println("[메시지]" + accs[identifier] + "님 로그인중..");
+				}
+			}
+			
+			else if (sel == 4) {
+				if(identifier == -1) {
+					System.out.println("[메세지] 로그인 후 이용이 가능합니다.");
+				}
+				else {
+					identifier = -1;
+					System.out.println("[메세지] 로그아웃 되었습니다.");
+				}
+			}
+			
+			else if (sel == 5) {
+				if(identifier != -1) {
+					System.out.print("[입금] 금액 입력: ");
+					int money = scan.nextInt();
+					moneys[identifier] += money;
+					System.out.println("[메세지] 입금이 완료되었습니다");
+				}
+				else {
+					System.out.println("[메세지] 로그인 후 이용 가능합니다.");
+				}
+			}
+			
+			else if (sel == 6) {
+				if(identifier != -1) {
+					System.out.print("[출금] 금액 입력: ");
+					int money = scan.nextInt();
+					
+					if(moneys[identifier] >= money) {
+						moneys[identifier] -= money;
+						System.out.println("[메세지] 출금을 완료하였습니다.");
+					}
+				}
+				else {
+					System.out.println("[메세지] 로그인 후 이용이 가능합니다.");
+				}
+			}
+			
+			else if (sel == 7) {
+				if(identifier != 1) {
+					System.out.println("[이체] 계좌번호 입력: ");
+					String acc = scan.next();
+					
+					int check = -1;
+					for(int i=0; i<accsCnt; i++) {
+						if(accs[i].equals(acc)) {
+							check = i;
+						}
+					}
+					if(check != -1) {
+						System.out.print("[이체] 금액입력: ");
+						int money = scan.nextInt();
+						if(moneys[identifier] >= money) {
+							moneys[identifier] -= money;
+							moneys[check] += money;
+							System.out.println("[메세지] 이체를 완료하였습니다.");
+						
+						}
+						else {
+							System.out.println("[메세지] 잔액이 부족합니다.");
+						}
+					}
+					else {
+						System.out.println("[메세지] 계좌번호를 확인해주세요.");
+					}
+				}
+				else {
+					System.out.println("[메세지] 로그인 후 이용이 가능합니다.");
+				}
+			}
+			
+			else if (sel == 8) {
 				
 			}
-			else if (sel == 4) {}
-			else if (sel == 5) {}
-			else if (sel == 6) {}
-			else if (sel == 7) {}
-			else if (sel == 8) {}
 			else if (sel == 9) {}
 			else if (sel == 10) {}
 			else if (sel == 0) {

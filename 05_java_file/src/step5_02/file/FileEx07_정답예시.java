@@ -132,7 +132,7 @@ public class FileEx07_정답예시 {
             }
 
             else if (sel == 4) { //로그아웃
-                if( identifier == -1) {
+                if(identifier == -1) {
                     System.out.println("[메세지]로그인 후 이용가능합니다.");
                 }
                 else {
