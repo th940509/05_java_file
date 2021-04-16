@@ -1,6 +1,11 @@
 package step5_02.file;
 //2021/04/12 14:00 ~ 
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 //# 파일 컨트롤러[2단계] : ATM
@@ -182,10 +187,71 @@ public class FileEx07_내정답 {
 			}
 			
 			else if (sel == 8) {
-				
+				if(identifier != -1) {
+					System.out.println(accs[identifier] + "님의 계좌 잔액은" + moneys[identifier] + "원 입니다.");
+				}
+				else {
+					System.out.println("[메세지] 로그인 후 이용 가능합니다.");
+				}
 			}
-			else if (sel == 9) {}
-			else if (sel == 10) {}
+			else if (sel == 9) {
+				 if(accsCnt == 0) {
+					 System.out.println("[메세지] 저장할 데이터가 없습니다.");
+					 continue;
+				 }
+				 
+				 String data = "";
+				 for(int i=0; i<accsCnt; i++) {
+					 data += accs[i];
+					 data += "/";
+					 data += pws[i];
+					 data += "/";
+					 data += moneys[i];
+					 data += "\n";
+					 
+				 }
+				 
+				 data = data.substring(0, data.length()-1);
+				 
+				 FileWriter fw = null;
+				 
+				 try {
+					 fw = new FileWriter(fileName);
+					 fw.write(data);
+				 } catch(Exception e) {
+					 e.printStackTrace();
+				 } finally {
+					 if(fw != null) {try {fw.close();} catch(IOException e) {e.printStackTrace();}}
+				 }
+			}
+			
+			else if (sel == 10) {
+				File file = new File(fileName);
+				
+				if(file.exists()) {
+					FileReader fr = null;
+					BufferedReader br = null;
+					
+					try {
+						fr = new FileReader(file);
+						br = new BufferedReader(fr);
+						
+						String data = "";
+						
+						while (true) {
+							String line = br.readLine();
+							if(line == null) {
+								break;
+							}
+							data += line;
+							data += "\n";
+						}
+						data =  data.substring(0, data.length()-1);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				}
+			}
 			else if (sel == 0) {
 				break;
 			}
