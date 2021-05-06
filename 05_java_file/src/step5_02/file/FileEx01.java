@@ -13,7 +13,7 @@ public class FileEx01 {
 		FileWriter fw = null;
 		
 		try { // 파일 입출력은 try, catch 구문이 없이 사용하지 못하도록 강제성을 부여해 놓았다.
-			fw = new FileWriter(fileName);          //파일을 생성하는 객체
+			fw = new FileWriter(fileName);          // 파일을 생성하는 객체
 		                                        	// write메서드를 통해서 파일에 데이터 입력이 가능하다.
 			fw.write("파일 저장하기 연습문제1\n");  // 1) 문자열 데이터 형식만 가능하다.
 			fw.write("파일 저장하기 연습문제2\n");  // 2) 개행기능이 없기 때문에 \n를 의도적으로 작성해야 한다.
