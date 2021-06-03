@@ -1,5 +1,6 @@
 package step5_02.file;
 //2021/04/08 16:40 ~ 17:07
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -37,8 +38,6 @@ public class FileEx03_내정답 {
 		} finally {
 			try {fw.close();} catch (IOException e) {e.printStackTrace();}
 		}
-		
-		
 		
 		}
 		

@@ -40,8 +40,6 @@ public class FileEx04_내정답 {
 			try {fw.close();} catch (IOException e) {e.printStackTrace();} 
 		}
 		
-
-
 	}
 
 }
